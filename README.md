@@ -1,126 +1,173 @@
-**This project is now depreciated, to access the latest, GUI Based version, go to :-** https://github.com/th-efool/Quant-Kernel
+You’re not asking to *change meaning* — you want to **change signal quality**:
+same facts, but presented with **intentional structure, visual rhythm, and professional tone**, not “abandoned dump”.
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
-![Pandas](https://img.shields.io/badge/pandas-required-brightgreen.svg)
-![Status](https://img.shields.io/badge/status-no%20longer%20maintained-red.svg)
+Below is a **clean, non-childish, non-emoji**, **badge-driven**, well-organized rewrite.
+You can paste this directly as your README.
 
-# Stock Signal Screener
+---
+# GOAT Stock Screener (Deprecated)
 
-GOAT Stock Screener is a Python-based project designed to analyze stocks using technical indicators and automated trading strategies. It leverages data from multiple sources, including [yfinance](https://pypi.org/project/yfinance/) for historical data and the Dhan HQ API for intraday data. With a modular structure, the project makes it easy to extend or customize strategies and indicators.
+![Status](https://img.shields.io/badge/status-deprecated-red.svg)
+![Language](https://img.shields.io/badge/python-3.7%2B-blue.svg)
+![Library](https://img.shields.io/badge/pandas-required-brightgreen.svg)
+![Market](https://img.shields.io/badge/markets-equities-lightgrey.svg)
 
-## Features
+> **Project Status Notice**  
+> This repository is **deprecated** and no longer under active development.  
+> The actively maintained, GUI-based successor is available here:  
+> **https://github.com/th-efool/Quant-Kernel**
 
-- **Multiple Technical Strategies**: Implementation of Moving Average Crossover and McGinley Dynamic indicator strategies.
-- **Dual Market Data Sources**: Support for Yahoo Finance (global markets) and Dhan brokerage API (Indian markets).
-- **Flexible Trading Timeframes**: Configure for daily or intraday (minute-based) analysis.
-- **Customizable Parameters**: Adjust indicator periods and calculation frequencies.
-- **Clear Signal Generation**: Distinct buy and sell signal identification.
-- **Modular Architecture**:Clear separation of functions, indicators, and strategy scripts for easy maintenance and expansion.
+---
+
+## Overview
+
+**GOAT Stock Screener** is a Python-based stock analysis and signal-generation framework focused on **technical indicators** and **rule-driven strategies**.
+
+The project was designed as a **modular research and experimentation base**, enabling rapid prototyping of trading logic across both **global** and **Indian equity markets**.
+
+It integrates:
+- **Yahoo Finance** for historical market data
+- **Dhan HQ API** for intraday Indian market data
+
+Although deprecated, the repository remains useful as a **reference implementation** for indicator pipelines, strategy structure, and backtesting workflows.
+
+---
+
+## Core Features
+
+- **Multiple Technical Strategies**
+  - Moving Average Crossover
+  - McGinley Dynamic–based signals
+
+- **Dual Market Data Sources**
+  - Yahoo Finance (global markets)
+  - Dhan HQ API (Indian equities)
+
+- **Flexible Timeframes**
+  - Daily analysis
+  - Intraday (minute-level) analysis
+
+- **Parameter-Driven Design**
+  - Adjustable indicator periods
+  - Configurable frequency multipliers
+
+- **Deterministic Signal Output**
+  - Clear buy / sell signal identification
+
+- **Modular Architecture**
+  - Separation of data ingestion, indicators, and strategies
+  - Designed for extension rather than monolithic execution
+
+---
 
 ## Project Structure
 
 ```
 goat/
-├── Good_Functions.py        # Data fetching (yfinance & Dhan HQ API) and backtesting functions.
-├── Indicators.py            # Calculation of technical indicators (e.g., McGinley indicator).
-├── Initialization.py        # Configuration and initialization (ticker arrays for different data sources).
-└── __init__.py
+├── Good_Functions.py        # Data fetching (Yahoo Finance & Dhan HQ) + backtesting
+├── Indicators.py            # Technical indicator implementations
+├── Initialization.py        # Ticker configuration and source initialization
+├── **init**.py
 
-├── MA Cross Buy.py          # Strategy for moving average crossover buy signals.
-├── MA Cross Sell.py         # Strategy for moving average crossover sell signals.
-├── McG Buy.py               # Strategy for McGinley-based buy signals.
-├── McG Sell.py              # Strategy for McGinley-based sell signals.
-├── Template.py              # Template for developing new strategies.
-└── __init__.py
-```
+├── MA Cross Buy.py          # Moving Average crossover buy strategy
+├── MA Cross Sell.py         # Moving Average crossover sell strategy
+├── McG Buy.py               # McGinley-based buy strategy
+├── McG Sell.py              # McGinley-based sell strategy
+├── Template.py              # Strategy development template
+└── **init**.py
+````
 
-## Getting Started
+---
 
-### Configuration
+## Configuration
 
-- **Dhan HQ API Credentials:**\
-  In `Good_Functions.py`, replace the placeholder values for `client_id` and `access_token` with your own credentials.
+### Dhan HQ API Credentials
+In `Good_Functions.py`, replace the placeholder values with your credentials:
 
-- **Ticker Initialization:**\
-  Update the ticker arrays in `Initialization.py` to match your preferred list of stocks for both yfinance and Dhan HQ.
+- `client_id`
+- `access_token`
 
-### Customizing Strategies
+### Ticker Initialization
+Edit `Initialization.py` to configure:
+- Yahoo Finance tickers
+- Dhan HQ security ID mappings
 
-You can modify the following parameters in each strategy file:
-- `day_trading`: Set to `True` for intraday analysis, `False` for daily analysis
-- `frequency`: Adjusts the time interval multiplication factor
-- `short`/`long`/`period`: Strategy-specific indicator periods
+---
 
-### Creating New Strategies
+## Strategy Customization
 
-1. Use `Template.py` as a starting point
-2. Implement your indicator calculations in the designated section
-3. Define your strategy logic for buying and selling.
-4. Run and test your new strategy
+Each strategy file exposes tunable parameters:
+
+- `day_trading` — intraday vs daily mode
+- `frequency` — interval scaling factor
+- `short`, `long`, `period` — indicator-specific windows
+
+---
+
+## Creating New Strategies
+
+1. Use `Template.py` as a base
+2. Implement indicator logic (or reuse from `Indicators.py`)
+3. Define buy/sell conditions
+4. Run and validate against historical data
+
+---
 
 ## Usage
 
-- **Running a Strategy:**
+### Running a Strategy
 
-  For example, to run the McGinley Sell strategy, execute:
+Example: McGinley Sell strategy
 
-  ```bash
-  python "McG Sell.py"
-  ```
+```bash
+python "McG Sell.py"
+````
 
-  This script will:
+This will:
 
-  - Fetch stock data (using yfinance or the Dhan HQ API based on your settings).
-  - Calculate the McGinley indicator.
-  - Generate and print sell signals by comparing stock highs with the indicator.
+1. Fetch market data
+2. Compute the McGinley Dynamic indicator
+3. Generate and print sell signals
 
-- **Developing Custom Strategies:**
+### Backtesting
 
-  Use `Template.py` as a starting point for your own strategy implementations. Add or modify indicator functions in `Indicators.py` as needed.
+The backtesting utilities in `Good_Functions.py` allow evaluation of strategies over historical datasets.
 
-- **Backtesting:**
+---
 
-  The `backtest` function in `Good_Functions.py` can be used to evaluate the performance of your strategies over historical data.
+## Installation
 
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a branch for your feature or bug fix.
-3. Commit your changes and submit a pull request.
-4. Ensure your code follows the project’s style guidelines and includes documentation where necessary.
-
-### Installation
 ### Prerequisites
-- Python 3.7 or higher
-- Required Python libraries:
-  - pandas
-  - numpy
-  - yfinance
-  - dhanhq
 
-Install dependencies using pip:
+* Python 3.7+
+
+### Dependencies
 
 ```bash
 pip install pandas numpy yfinance dhanhq
 ```
-1. **Clone the repository:**
 
-   ```bash
-   git clone https://github.com/yourusername/goat-stock-screener.git
-   cd goat-stock-screener
-   ```
+### Clone
 
-2. **(Optional) Create and activate a virtual environment:**
+```bash
+git clone https://github.com/yourusername/goat-stock-screener.git
+cd goat-stock-screener
+```
 
-   ```bash
-   python -m venv env
-   source env/bin/activate  # For Windows: env\Scripts\activate
-   ```
+(Optional) Virtual environment:
 
+```bash
+python -m venv env
+source env/bin/activate   # Windows: env\Scripts\activate
+```
+
+---
 
 ## Disclaimer
 
-This project is provided for educational and informational purposes only. Use it at your own risk. The author is not responsible for any financial losses incurred through its use.
+This project is provided **strictly for educational and research purposes**.
+No financial advice is given.
+The author assumes no responsibility for financial outcomes resulting from its use.
+
+
 
