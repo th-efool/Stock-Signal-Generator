@@ -1,3 +1,9 @@
+**This project is now depreciated, to access the latest, GUI Based version, go to :-** https://github.com/th-efool/Quant-Kernel
+
+![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![Pandas](https://img.shields.io/badge/pandas-required-brightgreen.svg)
+![Status](https://img.shields.io/badge/status-no%20longer%20maintained-red.svg)
+
 # Stock Signal Screener
 
 GOAT Stock Screener is a Python-based project designed to analyze stocks using technical indicators and automated trading strategies. It leverages data from multiple sources, including [yfinance](https://pypi.org/project/yfinance/) for historical data and the Dhan HQ API for intraday data. With a modular structure, the project makes it easy to extend or customize strategies and indicators.
