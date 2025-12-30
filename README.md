@@ -1,11 +1,4 @@
-You’re not asking to *change meaning* — you want to **change signal quality**:
-same facts, but presented with **intentional structure, visual rhythm, and professional tone**, not “abandoned dump”.
-
-Below is a **clean, non-childish, non-emoji**, **badge-driven**, well-organized rewrite.
-You can paste this directly as your README.
-
----
-# GOAT Stock Screener (Deprecated)
+# Stock Screener (Deprecated)
 
 ![Status](https://img.shields.io/badge/status-deprecated-red.svg)
 ![Language](https://img.shields.io/badge/python-3.7%2B-blue.svg)
